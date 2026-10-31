@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Свободное место</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101114;color:#fff;font-family:Arial,sans-serif}
+header{padding:24px 20px;background:#181a20;border-bottom:1px solid #30323a}
+.logo{font-size:25px;font-weight:bold;color:#70e0a0}
+header p{color:#aaa;margin-bottom:0}
+main{padding:20px;max-width:650px;margin:auto}
+h2{font-size:23px}
+.search{width:100%;padding:15px;border-radius:12px;border:1px solid #383b43;background:#202229;color:white;font-size:16px}
+.card{background:#1c1e25;border:1px solid #30323a;border-radius:16px;padding:18px;margin:16px 0}
+.card h3{margin:0 0 10px;font-size:20px}
+.muted{color:#a6a8b0;font-size:14px}
+.price{font-size:19px;font-weight:bold;margin:14px 0}
+button{background:#70e0a0;color:#101114;border:0;border-radius:10px;padding:13px 18px;font-weight:bold;font-size:15px;cursor:pointer}
+button:active{opacity:.8}
+.slots{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.slots button{background:#30343d;color:white}
+.slots button.selected{background:#70e0a0;color:#101114}
+#result{color:#70e0a0;margin-top:15px}
+footer{text-align:center;color:#777;padding:30px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">● Свободное место</div>
+<p>Находи свободное время без звонков и ожидания</p>
+</header>
+<main>
+<h2>Автомойки рядом</h2>
+<p class="muted">Уральск · Казахстан</p>
+<input class="search" placeholder="Найти автомойку..." oninput="search(this.value)">
+<div id="places">
+<div class="card">
+<h3>Автомойка №1</h3>
+<div class="muted">Уральск · Ручная мойка</div>
+<div class="price">от 2 000 ₸</div>
+<button onclick="book('Автомойка №1')">Выбрать время</button>
+</div>
+<div class="card">
+<h3>Автомойка №2</h3>
+<div class="muted">Уральск · Комплексная мойка</div>
+<div class="price">от 3 000 ₸</div>
+<button onclick="book('Автомойка №2')">Выбрать время</button>
+</div>
+<div class="card">
+<h3>Автомойка №3</h3>
+<div class="muted">Уральск · Быстрая мойка</div>
+<div class="price">от 1 500 ₸</div>
+<button onclick="book('Автомойка №3')">Выбрать время</button>
+</div>
+</div>
+<div class="card" id="booking" style="display:none">
+<h3 id="chosen"></h3>
+<p class="muted">Выбери удобное время:</p>
+<div class="slots">
+<button onclick="choose(this,'10:00')">10:00</button>
+<button onclick="choose(this,'11:00')">11:00</button>
+<button onclick="choose(this,'12:00')">12:00</button>
+<button onclick="choose(this,'13:00')">13:00</button>
+<button onclick="choose(this,'14:00')">14:00</button>
+<button onclick="choose(this,'15:00')">15:00</button>
+</div>
+<button onclick="confirmBooking()">Подтвердить запись</button>
+<div id="result"></div>
+</div>
+</main>
+<footer>Свободное место · Демоверсия проекта</footer>
+<script>
+let place='',time='';
+function book(name){
+place=name;time='';
+document.getElementById('chosen').textContent=name;
+document.getElementById('booking').style.display='block';
+document.getElementById('result').textContent='';
+document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+}
+function choose(btn,value){
+time=value;
+document.querySelectorAll('.slots button').forEach(b=>b.classList.remove('selected'));
+btn.classList.add('selected');
+}
+function confirmBooking(){
+if(!time){alert('Сначала выбери время');return;}
+document.getElementById('result').textContent='Тестовая запись: '+place+', '+time+'. Реальное бронирование пока не подключено.';
+}
+function search(value){
+document.querySelectorAll('#places .card').forEach(card=>{
+card.style.display=card.textContent.toLowerCase().includes(value.toLowerCase())?'block':'none';
+});
+}
+</script>
+</body>
+</html>
