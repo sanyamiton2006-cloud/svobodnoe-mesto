@@ -1,81 +1,127 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080808">
-<title>BOKS — запись на автомойку</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>BOKS — автомойки Уральска</title>
 <style>
-:root{color-scheme:dark;--bg:#080808;--panel:#111;--line:#292929;--muted:#a2a2a2;--white:#f5f5f5}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:16px/1.5 Arial,sans-serif}
-header{display:flex;justify-content:space-between;align-items:center;padding:20px max(5vw,20px);border-bottom:1px solid var(--line)}
-.logo{font-size:25px;font-weight:900;letter-spacing:5px}.city{color:var(--muted);font-size:13px}
-main{max-width:1080px;margin:auto;padding:50px 20px 80px}
-.hero{padding:38px 0 42px}.tag{color:#aaa;text-transform:uppercase;letter-spacing:3px;font-size:12px}
-h1{font-size:clamp(38px,8vw,76px);line-height:1.02;max-width:700px;margin:18px 0}
-.hero p{color:var(--muted);max-width:520px}.btn{background:#f4f4f4;color:#080808;border:0;border-radius:8px;padding:13px 20px;font-weight:800;cursor:pointer}
-.btn.secondary{background:#1c1c1c;color:#fff;border:1px solid #333}
-.section-head{display:flex;justify-content:space-between;gap:15px;align-items:end;margin:24px 0}
-h2{font-size:26px;margin:0}.muted{color:var(--muted);font-size:14px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-.filter{border:1px solid #333;background:#111;color:#ddd;border-radius:30px;padding:9px 15px;cursor:pointer}
-.filter.active{background:#fff;color:#000}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
-.card .kind{font-size:11px;letter-spacing:1.5px;color:#aaa;text-transform:uppercase}
-.card h3{font-size:21px;margin:12px 0 4px}.price{font-size:23px;font-weight:800;margin:16px 0 4px}
-.card button{width:100%;margin-top:16px}
-.note{margin-top:28px;padding:16px;border:1px solid var(--line);border-radius:10px;color:#aaa;font-size:13px}
-footer{border-top:1px solid var(--line);padding:22px 20px;text-align:center;color:#777;font-size:12px}
-.modal{display:none;position:fixed;inset:0;background:#000c;align-items:center;justify-content:center;padding:16px}
-.modal.open{display:flex}.dialog{width:min(100%,440px);background:#111;border:1px solid #333;border-radius:14px;padding:22px}
-.dialog h2{margin-bottom:16px}.dialog input,.dialog select{width:100%;padding:13px;margin:6px 0 12px;background:#080808;color:white;border:1px solid #383838;border-radius:8px}
-.dialog label{font-size:13px;color:#bbb}.dialog .actions{display:flex;gap:10px;margin-top:8px}.dialog .actions button{flex:1}
-#status{color:#bbb;font-size:13px;min-height:20px;margin-top:12px}
-@media(max-width:600px){main{padding-top:25px}.hero{padding:30px 0}.section-head{display:block}.section-head .muted{margin-top:6px}}
+*{box-sizing:border-box}
+body{margin:0;background:#090909;color:#fff;font-family:Arial,sans-serif}
+header{padding:25px 20px;background:#151515}
+.logo{font-size:34px;font-weight:900;letter-spacing:5px;color:#c5ff39}
+header p{color:#aaa}
+main{max-width:800px;margin:auto;padding:18px}
+.hero,.card,.booking{background:#171717;border:1px solid #303030;border-radius:16px;margin-bottom:20px;overflow:hidden}
+.hero{padding:22px;background:linear-gradient(135deg,#293719,#111)}
+h1{font-size:27px}
+h2{font-size:22px}
+p{line-height:1.5;color:#bbb}
+input,select{width:100%;padding:15px;margin:7px 0;background:#090909;color:white;border:1px solid #444;border-radius:10px;font-size:16px}
+.card img{width:100%;height:190px;object-fit:cover}
+.content{padding:17px}
+.content h3{margin:5px 0;font-size:21px}
+.info{font-size:14px;line-height:1.9;color:#bbb}
+.tag{color:#c5ff39;font-size:13px}
+a{color:#c5ff39}
+button{width:100%;padding:15px;background:#c5ff39;color:#111;border:0;border-radius:10px;font-weight:bold;font-size:16px;margin-top:12px}
+.booking{padding:18px}
+small{color:#888;line-height:1.5}
+footer{text-align:center;padding:25px;color:#777}
 </style>
 </head>
 <body>
-<header><div class="logo">BOKS</div><div class="city">УРАЛЬСК · KAZAKHSTAN</div></header>
+<header>
+<div class="logo">BOKS</div>
+<p>Запись на автомойку в Уральске</p>
+</header>
 <main>
 <section class="hero">
-<div class="tag">Автомойки рядом</div>
-<h1>Мойка без очереди.</h1>
-<p>Выбирай автомойку, смотри примерные цены и планируй удобное время. BOKS — простой способ найти место для своего автомобиля.</p>
-<a href="#catalog"><button class="btn">Выбрать автомойку</button></a>
+<h1>Найди свою автомойку</h1>
+<p>Выбирай место, смотри адрес и оставляй заявку на удобное время.</p>
 </section>
-<section id="catalog">
-<div class="section-head"><div><h2>Автомойки</h2><div class="muted">Демонстрационные карточки — реальные партнёры будут добавлены позже</div></div></div>
-<div class="filters">
-<button class="filter active" data-filter="all">Все</button>
-<button class="filter" data-filter="manual">Ручная мойка</button>
-<button class="filter" data-filter="self">Самообслуживание</button>
+
+<h2>Автомойки</h2>
+<input id="search" placeholder="Поиск автомойки..." oninput="filterWashes()">
+
+<div id="washes">
+<div class="card" data-name="apelsin апельсин">
+<img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=900" alt="Автомойка">
+<div class="content">
+<span class="tag">Круглосуточно</span>
+<h3>Apelsin</h3>
+<div class="info">📍 Улица Шолохова, 11/14<br>📞 +7 707 513-32-47</div>
+<a href="https://yandex.kz/maps/org/apelsin/31750982736/" target="_blank">Открыть карту</a>
+<button onclick="selectWash('Apelsin')">Выбрать</button>
 </div>
-<div class="grid" id="cards">
-<article class="card" data-kind="manual"><div class="kind">Ручная мойка</div><h3>Автомойка №1</h3><div class="muted">Центр · Уральск</div><div class="price">от 2 000 ₸</div><div class="muted">Примерная цена</div><button class="btn secondary" data-shop="Автомойка №1">Выбрать</button></article>
-<article class="card" data-kind="self"><div class="kind">Самообслуживание</div><h3>Автомойка №2</h3><div class="muted">Зачаганск · Уральск</div><div class="price">от 2 500 ₸</div><div class="muted">Примерная цена</div><button class="btn secondary" data-shop="Автомойка №2">Выбрать</button></article>
-<article class="card" data-kind="manual"><div class="kind">Ручная мойка</div><h3>Автомойка №3</h3><div class="muted">Шолохова · Уральск</div><div class="price">от 3 000 ₸</div><div class="muted">Примерная цена</div><button class="btn secondary" data-shop="Автомойка №3">Выбрать</button></article>
 </div>
+
+<div class="card" data-name="555">
+<img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=900" alt="Автомойка">
+<div class="content">
+<span class="tag">09:00–00:00</span>
+<h3>Автомойка 555</h3>
+<div class="info">📍 Проспект Абулхаир Хана, 1/1<br>📞 +7 747 652-10-12</div>
+<a href="https://yandex.kz/maps/?text=Автомойка%20555%20Уральск" target="_blank">Открыть карту</a>
+<button onclick="selectWash('555')">Выбрать</button>
+</div>
+</div>
+
+<div class="card" data-name="777">
+<img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?w=900" alt="Автомойка">
+<div class="content">
+<span class="tag">Круглосуточно</span>
+<h3>Автомойка 777</h3>
+<div class="info">📍 Район Омега<br>📞 +7 701 850-10-02</div>
+<a href="https://yandex.com/maps/org/777/234862813387/" target="_blank">Открыть карту</a>
+<button onclick="selectWash('777')">Выбрать</button>
+</div>
+</div>
+</div>
+
+<section class="booking" id="booking">
+<h2>Заявка на запись</h2>
+<form onsubmit="sendForm(event)">
+<select id="wash" required>
+<option value="">Выбери автомойку</option>
+<option>Apelsin</option>
+<option>555</option>
+<option>777</option>
+</select>
+<input id="name" placeholder="Твоё имя" required>
+<input id="phone" type="tel" placeholder="Номер телефона" required>
+<input id="date" type="date" required>
+<select id="time" required>
+<option value="">Выбери время</option>
+<option>09:00</option><option>10:00</option>
+<option>11:00</option><option>12:00</option>
+<option>13:00</option><option>14:00</option>
+<option>15:00</option><option>16:00</option>
+<option>17:00</option><option>18:00</option>
+<option>19:00</option><option>20:00</option>
+</select>
+<button type="submit">Отправить заявку</button>
+</form>
+<small>Демонстрационная версия: заявка пока не отправляется автомойке и не подтверждает бронирование. Адреса, телефоны и график нужно проверить перед запуском.</small>
 </section>
-<div class="note">Важно: сейчас это демонстрационная версия BOKS. Карточки, цены и время условные. Форма не отправляет заявку автомойке и не создаёт реальную бронь. Для запуска подключим настоящие автомойки и систему приёма заказов.</div>
 </main>
-<footer>© 2026 BOKS · Уральск</footer>
-<div class="modal" id="modal"><div class="dialog">
-<h2>Заявка на запись</h2><div class="muted" id="chosen"></div>
-<form id="booking">
-<label>Ваше имя</label><input required name="name" placeholder="Как к вам обращаться">
-<label>Телефон</label><input required name="phone" type="tel" placeholder="+7 7XX XXX XX XX">
-<label>Дата</label><input required name="date" type="date">
-<label>Время</label><select name="time"><option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option></select>
-<div class="actions"><button class="btn" type="submit">Продолжить</button><button class="btn secondary" type="button" id="close">Закрыть</button></div>
-<div id="status">Демонстрация: заявка никуда не отправляется.</div>
-</form></div></div>
+<footer>BOKS © 2026</footer>
 <script>
-const modal=document.getElementById('modal'), chosen=document.getElementById('chosen');
-document.querySelectorAll('[data-shop]').forEach(b=>b.addEventListener('click',()=>{chosen.textContent=b.dataset.shop;modal.classList.add('open')}));
-document.getElementById('close').onclick=()=>modal.classList.remove('open');
-modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
-document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.card').forEach(c=>c.style.display=b.dataset.filter==='all'||c.dataset.kind===b.dataset.filter?'block':'none')});
-document.getElementById('booking').addEventListener('submit',e=>{e.preventDefault();document.getElementById('status').textContent='Это тестовая форма. Для реальной записи нужно подключить сервер и автомойки.'});
+function filterWashes(){
+let q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.card').forEach(c=>{
+c.style.display=c.dataset.name.includes(q)?'block':'none';
+});
+}
+function selectWash(name){
+document.getElementById('wash').value=name;
+document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+}
+function sendForm(e){
+e.preventDefault();
+alert('Это демонстрация. Реальная запись пока не подключена.');
+}
 </script>
-</body></html>
+</body>
+</html>
